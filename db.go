@@ -269,3 +269,20 @@ func (p *Parent) ByteToDescribe(b []byte) {
 func GetMysqlTimeFormat() string {
 	return "2006-01-02 15:04:05"
 }
+
+func InsertSet(now string, n string) string {
+	h := make(map[string]bool)
+	for _, s := range strings.Split(now, ",") {
+		h[s] = true
+	}
+	h[n] = true
+
+	arr := make([]string, len(h))
+	i := 0
+	for k := range h {
+		arr[i] = k
+		i++
+	}
+
+	return strings.Join(arr, ",")
+}
