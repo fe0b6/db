@@ -348,13 +348,15 @@ func (p *Parent) CommitTx(txcommit bool) (err error) {
 				return
 			}
 
-			for i := range p.Fields {
-				// Запоминаем главный ключ
-				if p.Fields[i].Name == p.PKey {
-					if p.Fields[i].Type == "int" {
-						p.Fields[i].Value = int(id)
-					} else {
-						p.Fields[i].Value = id
+			if id > 0 {
+				for i := range p.Fields {
+					// Запоминаем главный ключ
+					if p.Fields[i].Name == p.PKey {
+						if p.Fields[i].Type == "int" {
+							p.Fields[i].Value = int(id)
+						} else {
+							p.Fields[i].Value = id
+						}
 					}
 				}
 			}
