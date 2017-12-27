@@ -35,7 +35,7 @@ func init() {
 	mysqlStrReg = regexp.MustCompile("text|char|enum|set")
 	mysqlFloatReg = regexp.MustCompile("float|double|decimal")
 	mysqlByteReg = regexp.MustCompile("binary")
-	mysqlTimeStampReg = regexp.MustCompile("timestamp")
+	mysqlTimeStampReg = regexp.MustCompile("timestamp|date")
 	mysqlTcpSocketReg = regexp.MustCompile("[^:]:[0-9]")
 
 	mysqlNoJsReg = regexp.MustCompile("nojson")
