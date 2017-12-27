@@ -268,8 +268,11 @@ func (p *Parent) ParseDbFields(rows *sql.Rows) (err error) {
 					if string(col) != "0000-00-00 00:00:00" {
 						t, err = time.Parse("2006-01-02 15:04:05", string(col))
 						if err != nil {
-							log.Println("[error]", err, p.DbTable, p.Fields[k].Name, string(col))
-							return
+							t, err = time.Parse("2006-01-02", string(col))
+							if err != nil {
+								log.Println("[error]", err, p.DbTable, p.Fields[k].Name, string(col))
+								return
+							}
 						}
 					}
 					p.Fields[k].Value = t
