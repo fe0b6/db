@@ -265,7 +265,7 @@ func (p *Parent) ParseDbFields(rows *sql.Rows) (err error) {
 					p.Fields[k].Value = []byte(col)
 				case "time.Time":
 					var t time.Time
-					if string(col) != "0000-00-00 00:00:00" {
+					if string(col) != "0000-00-00 00:00:00" && string(col) != "0000-00-00" {
 						t, err = time.Parse("2006-01-02 15:04:05", string(col))
 						if err != nil {
 							t, err = time.Parse("2006-01-02", string(col))
